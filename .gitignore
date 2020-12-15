@@ -5,8 +5,9 @@
 target/
 *.iml
 *.md
-mvnw
+mvnw*
 *.cmd
+.mvn/
 
 # Log file
 *.log
