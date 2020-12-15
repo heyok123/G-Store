@@ -11,3 +11,19 @@ spring:
           uri: lb://cupdata-pms-service
           predicates:
             - Path=/pms/**
+        - id: oms-route # 订单管理路由
+          uri: lb://cupdata-oms-service
+          predicates:
+            - Path=/oms/**
+        - id: ums-route # 用户管理路由
+          uri: lb://cupdata-ums-service
+          predicates:
+            - Path=/ums/**
+        - id: wms-route # 仓库管理路由
+          uri: lb://cupdata-wms-service
+          predicates:
+            - Path=/wms/**
+        - id: sms-route # 营销管理路由
+          uri: lb://cupdata-sms-service
+          predicates:
+            - Path=/sms/**
