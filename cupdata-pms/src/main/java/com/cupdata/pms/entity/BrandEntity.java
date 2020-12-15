@@ -2,16 +2,15 @@ package com.cupdata.pms.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * 品牌
  * 
- * @author wsork
- * @email wsork@163.com
+ * @author 这周日没空
+ * @email lypbenlf@163.com
  * @date 2020-12-15 13:44:06
  */
 @Data

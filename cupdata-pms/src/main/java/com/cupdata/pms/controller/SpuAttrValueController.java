@@ -15,8 +15,8 @@ import java.util.List;
 /**
  * spu属性值
  *
- * @author wsork
- * @email wsork@163.com
+ * @author 这周日没空
+ * @email lypbenlf@163.com
  * @date 2020-12-15 13:44:06
  */
 @Api(tags = "spu属性值 管理")

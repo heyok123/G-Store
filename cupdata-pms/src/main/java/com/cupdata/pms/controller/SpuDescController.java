@@ -1,29 +1,22 @@
 package com.cupdata.pms.controller;
 
-import java.util.List;
-
+import com.cupdata.common.bean.PageParamVo;
+import com.cupdata.common.bean.PageResultVo;
+import com.cupdata.common.bean.ResponseVo;
+import com.cupdata.pms.entity.SpuDescEntity;
+import com.cupdata.pms.service.SpuDescService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.cupdata.pms.entity.SpuDescEntity;
-import com.cupdata.pms.service.SpuDescService;
-import com.cupdata.common.bean.PageResultVo;
-import com.cupdata.common.bean.ResponseVo;
-import com.cupdata.common.bean.PageParamVo;
+import java.util.List;
 
 /**
  * spu信息介绍
  *
- * @author wsork
- * @email wsork@163.com
+ * @author 这周日没空
+ * @email lypbenlf@163.com
  * @date 2020-12-15 13:44:06
  */
 @Api(tags = "spu信息介绍 管理")
