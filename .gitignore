@@ -8,6 +8,8 @@ target/
 mvnw*
 *.cmd
 .mvn/
+LICENSE
+README.md
 
 # Log file
 *.log
