@@ -9,16 +9,15 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.atguigu</groupId>
+    <groupId>com.cupdata</groupId>
     <artifactId>G-Store</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>谷粒商城</description>
     <packaging>pom</packaging>
 
     <modules>
-        <module>gmall-admin</module>
-        <module>gmall-common</module>
+        <module>cupdata-admin</module>
+        <module>cupdata-common</module>
     </modules>
 
     <properties>
