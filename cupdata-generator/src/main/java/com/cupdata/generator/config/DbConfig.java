@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Primary;
  */
 @Configuration
 public class DbConfig {
-    @Value("${guli.database: mysql}")
+    @Value("${wsork.database: mysql}")
     private String database;
     @Autowired
     private MySQLGeneratorDao mySQLGeneratorDao;

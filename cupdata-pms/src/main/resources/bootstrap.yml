@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: cupdata-pms-service
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: f4e37d51-4e63-4259-9d8d-25e1db58af55
+        group: wsork
+        file-extension: yml # 默认找服务名.properties文件
