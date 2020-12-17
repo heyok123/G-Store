@@ -1,4 +1,4 @@
-//package io.guli.config;
+package com.cupdata.config;//package io.guli.config;
 //
 //import com.google.gson.Gson;
 //import HttpContextUtils;

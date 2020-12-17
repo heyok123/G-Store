@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>cupdata-admin</module>
+        <module>cupdata-adminstartor</module>
         <module>cupdata-common</module>
     </modules>
 
