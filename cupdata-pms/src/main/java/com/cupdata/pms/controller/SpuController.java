@@ -28,6 +28,20 @@ public class SpuController {
     private SpuService spuService;
 
     /**
+     * @Description: spu商品信息查询
+     * @Author: Wsork
+     * @Date: 2020/12/30 14:26
+     * @param: [pageParamVo, categoryId]
+     * @return: com.cupdata.common.bean.ResponseVo<com.cupdata.common.bean.PageResultVo>
+     */
+    @ApiOperation("spu商品信息查询")
+    @GetMapping("category/{categoryId}")
+    public ResponseVo<PageResultVo> querySpuInfo(PageParamVo pageParamVo, @PathVariable("categoryId")Long categoryId){
+        PageResultVo pageResultVo = this.spuService.querySpuInfo(pageParamVo, categoryId);
+        return ResponseVo.ok(pageResultVo);
+    }
+
+    /**
      * 列表
      */
     @GetMapping

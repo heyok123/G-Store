@@ -28,6 +28,20 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
+     * @Description: 根据父id查询商品分类
+     * @Author: Wsork
+     * @Date: 2020/12/29 16:59
+     * @param: [parentId]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.CategoryEntity>>
+     */
+    @ApiOperation("根据父id查询分类")
+    @GetMapping("parent/{parentId}")
+    public ResponseVo<List<CategoryEntity>> queryCategory(@PathVariable("parentId")long parentId){
+        List<CategoryEntity> categoryEntities = this.categoryService.queryCategory(parentId);
+        return ResponseVo.ok(categoryEntities);
+    }
+
+    /**
      * 列表
      */
     @GetMapping

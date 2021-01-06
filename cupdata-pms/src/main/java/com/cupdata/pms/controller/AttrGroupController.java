@@ -1,5 +1,6 @@
 package com.cupdata.pms.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cupdata.common.bean.PageParamVo;
 import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.common.bean.ResponseVo;
@@ -26,6 +27,20 @@ public class AttrGroupController {
 
     @Autowired
     private AttrGroupService attrGroupService;
+
+    /**
+     * @Description: 根据三级分类id查询
+     * @Author: Wsork
+     * @Date: 2020/12/30 14:13
+     * @param: [cid]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.AttrGroupEntity>>
+     */
+    @ApiOperation("根据三级分类id查询")
+    @GetMapping("category/{cid}")
+    public ResponseVo<List<AttrGroupEntity>> queryByCidPage(@PathVariable("cid")long cid){
+        List<AttrGroupEntity> groupEntities = this.attrGroupService.list(new QueryWrapper<AttrGroupEntity>().eq("category_id", cid));
+        return ResponseVo.ok(groupEntities);
+    }
 
     /**
      * 列表

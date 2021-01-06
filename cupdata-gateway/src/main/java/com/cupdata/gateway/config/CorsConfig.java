@@ -1,14 +1,12 @@
 package com.cupdata.gateway.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
-/**
- * CORS跨域
- */
-//@Configuration
+@Configuration
 public class CorsConfig {
 
     @Bean
@@ -19,6 +17,8 @@ public class CorsConfig {
         // 允许的域,不要写*，否则cookie就无法使用了
         config.addAllowedOrigin("http://manager.gmall.com");
         config.addAllowedOrigin("http://www.gmall.com");
+        config.addAllowedOrigin("http://gmall.com");
+        config.addAllowedOrigin("http://index.gmall.com");
         // 允许的头信息
         config.addAllowedHeader("*");
         // 允许的请求方式

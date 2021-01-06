@@ -1,5 +1,6 @@
 package com.cupdata.pms.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cupdata.common.bean.PageParamVo;
 import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.common.bean.ResponseVo;
@@ -26,6 +27,20 @@ public class AttrController {
 
     @Autowired
     private AttrService attrService;
+
+    /**
+     * @Description: 查询分组下的规格参数
+     * @Author: Wsork
+     * @Date: 2020/12/30 14:14
+     * @param: [gid]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.AttrEntity>>
+     */
+    @GetMapping("group/{gid}")
+    @ApiOperation("分页查询")
+    public ResponseVo<List<AttrEntity>> queryAttrsByGid(@PathVariable("gid")Long gid){
+        List<AttrEntity> attrEntities = this.attrService.list(new QueryWrapper<AttrEntity>().eq("group_id", gid));
+        return ResponseVo.ok(attrEntities);
+    }
 
     /**
      * 列表

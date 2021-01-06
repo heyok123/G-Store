@@ -15,5 +15,14 @@ import com.cupdata.pms.entity.SpuEntity;
 public interface SpuService extends IService<SpuEntity> {
 
     PageResultVo queryPage(PageParamVo paramVo);
+
+    /**
+     * @Description: spu商品信息查询
+     * @Author: Wsork
+     * @Date: 2020/12/30 14:26
+     * @param: [pageParamVo, categoryId]
+     * @return: com.cupdata.common.bean.ResponseVo<com.cupdata.common.bean.PageResultVo>
+     */
+    PageResultVo querySpuInfo(PageParamVo pageParamVo, Long categoryId);
 }
 
