@@ -1,23 +1,17 @@
 package com.cupdata.wms.controller;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.cupdata.common.bean.PageParamVo;
+import com.cupdata.common.bean.PageResultVo;
+import com.cupdata.common.bean.ResponseVo;
+import com.cupdata.wms.entity.WareSkuEntity;
+import com.cupdata.wms.service.WareSkuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.cupdata.wms.entity.WareSkuEntity;
-import com.cupdata.wms.service.WareSkuService;
-import com.cupdata.common.bean.PageResultVo;
-import com.cupdata.common.bean.ResponseVo;
-import com.cupdata.common.bean.PageParamVo;
+import java.util.List;
 
 /**
  * 商品库存
@@ -33,6 +27,21 @@ public class WareSkuController {
 
     @Autowired
     private WareSkuService wareSkuService;
+
+
+    /**
+     * @Description: 根据skuId查询库存
+     * @Author: Wsork
+     * @Date: 2021/1/18 17:20
+     * @param: [skuId]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.wms.entity.WareSkuEntity>>
+     */
+    @GetMapping("sku/{skuId}")
+    @ApiOperation("根据skuId查询库存")
+    public ResponseVo<List<WareSkuEntity>> queryWareSkuBySkuId(@PathVariable("skuId") Long skuId){
+        List<WareSkuEntity> skuEntityList = this.wareSkuService.list(new QueryWrapper<WareSkuEntity>().eq("sku_id", skuId));
+        return ResponseVo.ok(skuEntityList);
+    }
 
     /**
      * 列表

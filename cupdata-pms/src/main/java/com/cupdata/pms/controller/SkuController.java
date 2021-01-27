@@ -1,5 +1,6 @@
 package com.cupdata.pms.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cupdata.common.bean.PageParamVo;
 import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.common.bean.ResponseVo;
@@ -36,6 +37,21 @@ public class SkuController {
     @Value("${myName}")
     private String myName;
 
+
+    /**
+     * @Description: 根据spuId查询sku列表
+     * @Author: Wsork
+     * @Date: 2021/1/15 14:34
+     * @param: [spuId]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.SkuEntity>>
+     */
+    @GetMapping("sku/{spuId}")
+    @ApiOperation("根据spuId查询sku列表")
+    public ResponseVo<List<SkuEntity>> querySkuBySpu(@PathVariable("spuId") Long spuId){
+        List<SkuEntity> skuEntities = this.skuService.list(new QueryWrapper<SkuEntity>().eq("spu_id", spuId));
+        return ResponseVo.ok(skuEntities);
+    }
+
     @GetMapping("/hello")
     public ResponseVo<String> hello(){
         LOGGER.info("hello.:)" + "\t" + myName);
@@ -52,7 +68,6 @@ public class SkuController {
 
         return ResponseVo.ok(pageResultVo);
     }
-
 
     /**
      * 信息

@@ -53,7 +53,7 @@ public class UserController {
     /**
      * 保存
      */
-    @PostMapping
+    @PostMapping()
     @ApiOperation("保存")
     public ResponseVo<Object> save(@RequestBody UserEntity user){
 		userService.save(user);
