@@ -1,23 +1,17 @@
 package com.cupdata.sms.controller;
 
-import java.util.List;
-
+import com.cupdata.common.bean.PageParamVo;
+import com.cupdata.common.bean.PageResultVo;
+import com.cupdata.common.bean.ResponseVo;
+import com.cupdata.sms.entity.SkuBoundsEntity;
+import com.cupdata.sms.service.SkuBoundsService;
+import com.cupdata.sms.vo.SkuSaleVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.cupdata.sms.entity.SkuBoundsEntity;
-import com.cupdata.sms.service.SkuBoundsService;
-import com.cupdata.common.bean.PageResultVo;
-import com.cupdata.common.bean.ResponseVo;
-import com.cupdata.common.bean.PageParamVo;
+import java.util.List;
 
 /**
  * 商品spu积分设置
@@ -33,6 +27,20 @@ public class SkuBoundsController {
 
     @Autowired
     private SkuBoundsService skuBoundsService;
+
+    /**
+     * @Description: 新增sku的营销信息
+     * @Author: Wsork
+     * @Date: 2021/1/28 9:51
+     * @param: [skuSaleVo]
+     * @return: com.cupdata.common.bean.ResponseVo
+     */
+    @PostMapping("/skuSale/save")
+    @ApiOperation("新增sku的营销信息")
+    public ResponseVo saveSkuSale(@RequestBody SkuSaleVo skuSaleVo){
+        this.skuBoundsService.saveSkuSale(skuSaleVo);
+        return ResponseVo.ok();
+    }
 
     /**
      * 列表

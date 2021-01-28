@@ -19,6 +19,12 @@
 	</properties>-->
 
 	<dependencies>
+		<!-- cupdata-sms-api -->
+		<dependency>
+			<groupId>com.cupdata</groupId>
+			<artifactId>cupdata-sms-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- mybatis-plus -->
 		<dependency>
 			<groupId>com.baomidou</groupId>

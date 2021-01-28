@@ -28,6 +28,25 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
+    /**
+     * @Description: 分类下的销售属性查询
+     * @Author: Wsork
+     * @Date: 2021/1/27 15:10
+     * @param: [cid]
+     * @return: com.cupdata.common.bean.ResponseVo
+     */
+    @GetMapping("category/{cid}")
+    @ApiOperation("分类查询")
+    public ResponseVo queryAttrsByCid(@PathVariable("cid") long cid,
+                                      @RequestParam("type") Integer type,
+                                      @RequestParam("searchType") Integer searchType){
+        List<AttrEntity> attrEntities = this.attrService.queryAttrsByCid(cid,type,searchType);
+        return ResponseVo.ok(attrEntities);
+
+
+
+    }
+
 
     /**
      * @Description: 查询分组下的规格参数

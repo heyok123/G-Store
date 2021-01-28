@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.cupdata.common.bean.PageParamVo;
 import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.pms.entity.SpuEntity;
+import com.cupdata.pms.vo.SpuVo;
 
 /**
  * spu信息
@@ -24,5 +25,14 @@ public interface SpuService extends IService<SpuEntity> {
      * @return: com.cupdata.common.bean.ResponseVo<com.cupdata.common.bean.PageResultVo>
      */
     PageResultVo querySpuInfo(PageParamVo pageParamVo, Long categoryId);
+
+    /**
+     * @Description: SPU大保存
+     * @Author: Wsork
+     * @Date: 2021/1/27 16:09
+     * @param: [spuVo]
+     * @return: void
+     */
+    void bigSave(SpuVo spuVo);
 }
 

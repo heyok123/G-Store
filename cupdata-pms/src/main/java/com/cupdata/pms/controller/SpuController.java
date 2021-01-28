@@ -5,6 +5,7 @@ import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.common.bean.ResponseVo;
 import com.cupdata.pms.entity.SpuEntity;
 import com.cupdata.pms.service.SpuService;
+import com.cupdata.pms.vo.SpuVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,20 @@ public class SpuController {
 
     @Autowired
     private SpuService spuService;
+
+    /**
+     * @Description: SPU大保存
+     * @Author: Wsork
+     * @Date: 2021/1/27 16:08
+     * @param: [spuVo]
+     * @return: com.cupdata.common.bean.ResponseVo
+     */
+    @PostMapping
+    @ApiOperation("保存")
+    public ResponseVo bigSave(@RequestBody SpuVo spuVo){
+        this.spuService.bigSave(spuVo);
+        return ResponseVo.ok();
+    }
 
     /**
      * @Description: spu商品信息查询
@@ -67,7 +82,7 @@ public class SpuController {
     /**
      * 保存
      */
-    @PostMapping
+//    @PostMapping
     @ApiOperation("保存")
     public ResponseVo<Object> save(@RequestBody SpuEntity spu){
 		spuService.save(spu);

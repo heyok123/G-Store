@@ -17,6 +17,13 @@
 	</properties>-->
 
 	<dependencies>
+		<!-- cupdata-sms-api -->
+		<dependency>
+			<groupId>com.cupdata</groupId>
+			<artifactId>cupdata-sms-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- aliyun oss 图片上传 -->
 		<dependency>
 			<groupId>com.aliyun.oss</groupId>

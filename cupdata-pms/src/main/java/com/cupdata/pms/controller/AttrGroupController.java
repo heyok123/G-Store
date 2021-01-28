@@ -6,6 +6,7 @@ import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.common.bean.ResponseVo;
 import com.cupdata.pms.entity.AttrGroupEntity;
 import com.cupdata.pms.service.AttrGroupService;
+import com.cupdata.pms.vo.GroupVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,20 @@ public class AttrGroupController {
 
     @Autowired
     private AttrGroupService attrGroupService;
+
+    /**
+     * @Description: 根据三级分类id查询分组及组下的规格参数
+     * @Author: Wsork
+     * @Date: 2021/1/27 14:48
+     * @param: [catId]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.vo.GroupVo>>
+     */
+    @ApiOperation("根据三级分类id查询分组及组下的规格参数")
+    @GetMapping("/withattrs/{catId}")
+    public ResponseVo<List<GroupVo>> queryByCid(@PathVariable("catId") long catId){
+        List<GroupVo> groupVos = this.attrGroupService.queryByCid(catId);
+        return ResponseVo.ok(groupVos);
+    }
 
     /**
      * @Description: 根据三级分类id查询
