@@ -19,6 +19,17 @@
 	</properties>-->
 
 	<dependencies>
+		<!-- seata -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-alibaba-seata</artifactId>
+			<version>2.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>io.seata</groupId>
+			<artifactId>seata-all</artifactId>
+			<version>1.2.0</version>
+		</dependency>
 		<!-- cupdata-sms-api -->
 		<dependency>
 			<groupId>com.cupdata</groupId>

@@ -13,10 +13,13 @@ import com.cupdata.pms.vo.SkuVo;
 import com.cupdata.pms.vo.SpuAttrValueVo;
 import com.cupdata.pms.vo.SpuVo;
 import com.cupdata.sms.vo.SkuSaleVo;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Date;
@@ -72,33 +75,35 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
         return new PageResultVo(this.page(pageParamVo.getPage(), wrapper));
     }
 
-    // SPU大保存
+    /**
+     * @Description: SPU大保存
+     * @Author: Wsork
+     * @Date: 2021/1/27 16:09
+     */
+//    @Transactional
+    @GlobalTransactional // 分布式事务seata: sms
     @Override
     public void bigSave(SpuVo spuVo) {
         // 1.保存SPU
         // 1.1 spu
-        spuVo.setPublishStatus(1);
-        spuVo.setCreateTime(new Date());
-        spuVo.setUpdateTime(spuVo.getCreateTime());
-        this.save(spuVo);
-        Long spuId = spuVo.getId(); // >> 获取spuId <<
+        Long spuId = saveSpu(spuVo);
         // 1.2 spu_desc
-        SpuDescEntity descEntity = new SpuDescEntity();
-        descEntity.setSpuId(spuId); // 配置中主键为auto,entity需手动输入设置主键
-        descEntity.setDecript(StringUtils.join(spuVo.getSpuImages(),","));
-        spuDescService.save(descEntity);
+        this.saveSpuDesc(spuVo, spuId);
+        // 传播行为演示：获取代理对象
+//        SpuService spuService = (SpuService) AopContext.currentProxy();
+//        spuService.saveSpuDesc(spuVo, spuId);
+//        int i = 1 / 0; // 事务演示
         // 1.3 spu_attr_value
-        List<SpuAttrValueVo> baseAttrs = spuVo.getBaseAttrs();
-        if (!CollectionUtils.isEmpty(baseAttrs)) {
-            List<SpuAttrValueEntity> spuAttrValueVoList = baseAttrs.stream().map(spuAttrValueVo -> {
-                spuAttrValueVo.setSpuId(spuId);
-                spuAttrValueVo.setSort(1);
-                return spuAttrValueVo;
-            }).collect(Collectors.toList());
-            spuAttrValueService.saveBatch(spuAttrValueVoList);
-        }
-
+        saveSpuAttrValue(spuVo, spuId);
         // 2.保存SKU
+        saveSkuAndSaleInfo(spuVo, spuId);
+    }
+
+    /**
+     * @Description: 保存SKU
+     * Created by Wsork on 2021/1/28 11:28
+     */
+    public void saveSkuAndSaleInfo(SpuVo spuVo, Long spuId) {
         // 2.1 sku
         List<SkuVo> skuVos = spuVo.getSkuVos();
         if (CollectionUtils.isEmpty(skuVos)) {
@@ -146,15 +151,56 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
                 skuAttrValueService.saveBatch(saleAttrs);
             }
 
-            // 3.保存SMS：sku_bounds、sku_ladder、sku_full_reduction
+            // 3.保存SMS：sku_bounds、sku_ladder、sku_full_reduction (feign--sms)
             SkuSaleVo skuSaleVo = new SkuSaleVo();
             BeanUtils.copyProperties(skuVo,skuSaleVo);
             skuSaleVo.setSkuId(skuId);
             smsSkuSaleClient.saveSkuSale(skuSaleVo);
         });
+    }
 
+    /**
+     * @Description: 保存spu基本属性信息
+     * Created by Wsork on 2021/1/28 11:25
+     */
+    public void saveSpuAttrValue(SpuVo spuVo, Long spuId) {
+        // 1.3 spu_attr_value
+        List<SpuAttrValueVo> baseAttrs = spuVo.getBaseAttrs();
+        if (!CollectionUtils.isEmpty(baseAttrs)) {
+            List<SpuAttrValueEntity> spuAttrValueVoList = baseAttrs.stream().map(spuAttrValueVo -> {
+                spuAttrValueVo.setSpuId(spuId);
+                spuAttrValueVo.setSort(1);
+                return spuAttrValueVo;
+            }).collect(Collectors.toList());
+            spuAttrValueService.saveBatch(spuAttrValueVoList);
+        }
+    }
 
+    /**
+     * @Description: 保存spu描述信息（图片）
+     * Created by Wsork on 2021/1/28 11:24
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW) // 传播行为演示：非同一事物中
+    public void saveSpuDesc(SpuVo spuVo, Long spuId) {
+        // 1.2 spu_desc
+        SpuDescEntity descEntity = new SpuDescEntity();
+        descEntity.setSpuId(spuId); // 配置中主键为auto,entity需手动输入设置主键
+        descEntity.setDecript(StringUtils.join(spuVo.getSpuImages(),","));
+        spuDescService.save(descEntity);
+    }
 
+    /**
+     * @Description: 保存spu基本信息
+     * Created by Wsork on 2021/1/28 11:24
+     */
+    @Transactional
+    public Long saveSpu(SpuVo spuVo) {
+        // 1.1 spu
+        spuVo.setPublishStatus(1);
+        spuVo.setCreateTime(new Date());
+        spuVo.setUpdateTime(spuVo.getCreateTime());
+        this.save(spuVo);
+        return spuVo.getId();
     }
 
 }

@@ -16,6 +16,7 @@ import com.cupdata.sms.vo.SkuSaleVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -39,7 +40,11 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsMapper, SkuBounds
         return new PageResultVo(page);
     }
 
-    // 新增sku的营销信息
+    /**
+     * @Description: 新增sku的营销信息
+     * Created by Wsork on 2021/1/28 16:42
+     */
+    @Transactional
     @Override
     public void saveSkuSale(SkuSaleVo skuSaleVo) {
         // 1.sku_bounds

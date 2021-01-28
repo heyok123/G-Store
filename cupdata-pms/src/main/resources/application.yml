@@ -34,6 +34,12 @@
 #  sentinel:
 #    enabled: true
 
+spring:
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: cupdata_tx_group
+
 logging:
   level:
     com.cupdata.pms: debug

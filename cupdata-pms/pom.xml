@@ -17,13 +17,28 @@
 	</properties>-->
 
 	<dependencies>
+		<!-- seata -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-alibaba-seata</artifactId>
+			<version>2.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>io.seata</groupId>
+			<artifactId>seata-all</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- aop: 演示事务传播行为 获取动态代理对象 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 		<!-- cupdata-sms-api -->
 		<dependency>
 			<groupId>com.cupdata</groupId>
 			<artifactId>cupdata-sms-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
 		<!-- aliyun oss 图片上传 -->
 		<dependency>
 			<groupId>com.aliyun.oss</groupId>

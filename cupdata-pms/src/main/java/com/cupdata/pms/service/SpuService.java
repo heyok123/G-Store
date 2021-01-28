@@ -34,5 +34,29 @@ public interface SpuService extends IService<SpuEntity> {
      * @return: void
      */
     void bigSave(SpuVo spuVo);
+
+    /**
+     * @Description: 保存SKU
+     * Created by Wsork on 2021/1/28 11:28
+     */
+    void saveSkuAndSaleInfo(SpuVo spuVo, Long spuId);
+
+    /**
+     * @Description: 保存spu基本属性信息
+     * Created by Wsork on 2021/1/28 11:25
+     */
+    void saveSpuAttrValue(SpuVo spuVo, Long spuId);
+
+    /**
+     * @Description: 保存spu描述信息（图片）
+     * Created by Wsork on 2021/1/28 11:24
+     */
+    void saveSpuDesc(SpuVo spuVo, Long spuId);
+
+    /**
+     * @Description: 保存spu基本信息
+     * Created by Wsork on 2021/1/28 11:24
+     */
+    Long saveSpu(SpuVo spuVo);
 }
 
