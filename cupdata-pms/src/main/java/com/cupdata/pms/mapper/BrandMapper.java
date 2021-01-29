@@ -1,7 +1,7 @@
 package com.cupdata.pms.mapper;
 
-import com.cupdata.pms.entity.BrandEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cupdata.pms.entity.BrandEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

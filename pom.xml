@@ -20,6 +20,8 @@
         <module>cupdata-common</module>
         <module>cupdata-sms-api</module>
         <module>cupdata-sms-api</module>
+        <module>cupdata-pms-api</module>
+        <module>cupdata-wms-api</module>
     </modules>
 
     <properties>

@@ -1,7 +1,7 @@
 package com.cupdata.wms.mapper;
 
-import com.cupdata.wms.entity.PurchaseEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cupdata.wms.entity.PurchaseEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

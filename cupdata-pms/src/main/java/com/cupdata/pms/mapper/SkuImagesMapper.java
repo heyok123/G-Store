@@ -1,7 +1,7 @@
 package com.cupdata.pms.mapper;
 
-import com.cupdata.pms.entity.SkuImagesEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cupdata.pms.entity.SkuImagesEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

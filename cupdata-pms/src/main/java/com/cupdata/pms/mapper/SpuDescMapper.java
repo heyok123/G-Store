@@ -1,7 +1,7 @@
 package com.cupdata.pms.mapper;
 
-import com.cupdata.pms.entity.SpuDescEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cupdata.pms.entity.SpuDescEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

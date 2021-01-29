@@ -17,6 +17,11 @@
 	</properties>-->
 
 	<dependencies>
+		<dependency>
+			<groupId>com.cupdata</groupId>
+			<artifactId>cupdata-pms-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- seata -->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>

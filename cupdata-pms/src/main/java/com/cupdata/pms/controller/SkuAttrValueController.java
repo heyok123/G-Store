@@ -28,6 +28,37 @@ public class SkuAttrValueController {
     private SkuAttrValueService skuAttrValueService;
 
     /**
+     * @Description: 根据skuId查询检索属性及值 1 √
+     * @Author: Wsork
+     * @Date: 2021/1/29 17:29
+     * @param: [cid, skuId]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.SkuAttrValueEntity>>
+     */
+    @GetMapping("search/{cid}/{skuId}")
+    public ResponseVo<List<SkuAttrValueEntity>> querySearchSkuAttrValuesByCidAndSkuId(
+            @PathVariable("cid")Long cid, @PathVariable("skuId")Long skuId
+    ){
+        List<SkuAttrValueEntity> skuAttrValueEntities = this.skuAttrValueService.querySearchSkuAttrValuesByCidAndSkuId(cid, skuId);
+        return ResponseVo.ok(skuAttrValueEntities);
+    }
+
+    /**
+     * @Description: 根据skuId查询检索属性及值 2 ×
+     * @Author: Wsork
+     * @Date: 2021/1/29 11:23
+     * @param: [skuId]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.SkuAttrValueEntity>>
+     */
+    @ApiOperation("根据skuId查询检索属性及值")
+    @GetMapping("/{skuId}")
+    public ResponseVo<List<SkuAttrValueEntity>> queryAttrValueBySkuId(@PathVariable("skuId")Long skuId){
+        List<SkuAttrValueEntity> attrValueEntities = skuAttrValueService.querySearchAttrValueBySkuId(skuId);
+
+        return ResponseVo.ok(attrValueEntities);
+    }
+
+
+    /**
      * 列表
      */
     @GetMapping

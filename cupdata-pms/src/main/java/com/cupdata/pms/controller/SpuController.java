@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * spu信息
@@ -27,6 +28,26 @@ public class SpuController {
 
     @Autowired
     private SpuService spuService;
+
+    /**
+     * @Description: 分页查询已上架SPU
+     * @Author: Wsork
+     * @Date: 2021/1/29 10:59
+     * @param: [pageParamVo]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.SpuEntity>>
+     */
+    @PostMapping("/spuJson")
+    @ApiOperation("分页查询已上架SPU")
+    public ResponseVo<List<SpuEntity>> querySpuByPageJson(@RequestBody PageParamVo pageParamVo){
+        PageResultVo pageResultVo = this.spuService.queryPage(pageParamVo);
+        List<SpuEntity> spuEntities = (List<SpuEntity>) (pageResultVo.getList());
+        List<SpuEntity> spuEntityList = spuEntities.stream()
+                .filter(spuEntity -> spuEntity.getPublishStatus().equals(1))
+                .collect(Collectors.toList());
+        return ResponseVo.ok(spuEntityList);
+//        return ResponseVo.ok((List<SpuEntity>)(pageResultVo.getList()));
+
+    }
 
     /**
      * @Description: SPU大保存

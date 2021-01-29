@@ -18,6 +18,28 @@
 	</properties>-->
 
 	<dependencies>
+		<!--
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+		-->
+		<!-- 接口工程:pms/wms -->
+		<dependency>
+			<groupId>com.cupdata</groupId>
+			<artifactId>cupdata-wms-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cupdata</groupId>
+			<artifactId>cupdata-pms-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- elasticsearch -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -97,6 +119,10 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
 

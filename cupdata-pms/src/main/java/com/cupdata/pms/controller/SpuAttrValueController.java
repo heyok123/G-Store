@@ -28,6 +28,35 @@ public class SpuAttrValueController {
     private SpuAttrValueService spuAttrValueService;
 
     /**
+     * @Description: 根据spuId查询检索属性及值 √
+     * @Author: Wsork
+     * @Date: 2021/1/29 11:02
+     * @param: []
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.SpuAttrValueEntity>>
+     */
+    @GetMapping("search/{cid}/{spuId}")
+    public ResponseVo<List<SpuAttrValueEntity>> querySearchSpuAttrValuesByCidAndSpuId(
+            @PathVariable("cid")Long cid, @PathVariable("spuId")Long spuId
+    ){
+        List<SpuAttrValueEntity> spuAttrValueEntities = this.spuAttrValueService.querySearchSpuAttrValuesByCidAndSpuId(cid, spuId);
+        return ResponseVo.ok(spuAttrValueEntities);
+    }
+
+    /**
+     * @Description: 根据spuId查询检索属性及值 ×
+     * @Author: Wsork
+     * @Date: 2021/1/29 11:02
+     * @param: []
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.List<com.cupdata.pms.entity.SpuAttrValueEntity>>
+     */
+    @GetMapping("/{spuId}")
+    @ApiOperation("根据spuId查询检索属性及值")
+    public ResponseVo<List<SpuAttrValueEntity>> querySpuAttrValueBySpuId(@PathVariable("spuId") long spuId){
+        List<SpuAttrValueEntity> spuAttrValueEntities = this.spuAttrValueService.querySpuAttrValueBySpuId(spuId);
+        return ResponseVo.ok(spuAttrValueEntities);
+    }
+
+    /**
      * 列表
      */
     @GetMapping

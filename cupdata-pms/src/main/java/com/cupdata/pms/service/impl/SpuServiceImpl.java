@@ -185,7 +185,7 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
         // 1.2 spu_desc
         SpuDescEntity descEntity = new SpuDescEntity();
         descEntity.setSpuId(spuId); // 配置中主键为auto,entity需手动输入设置主键
-        descEntity.setDecript(StringUtils.join(spuVo.getSpuImages(),","));
+        descEntity.setDecript(StringUtils.join(spuVo.getSpuImages(),",")); // 逗号拼接
         spuDescService.save(descEntity);
     }
 

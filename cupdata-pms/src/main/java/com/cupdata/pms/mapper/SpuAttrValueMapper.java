@@ -1,8 +1,10 @@
 package com.cupdata.pms.mapper;
 
-import com.cupdata.pms.entity.SpuAttrValueEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.cupdata.pms.entity.SpuAttrValueEntity;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * spu属性值
@@ -13,5 +15,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface SpuAttrValueMapper extends BaseMapper<SpuAttrValueEntity> {
-	
-}
+
+    /**
+     * @Description: 根据spuId查询检索属性及值
+     * Created by Wsork on 2021/1/29 11:10
+     */
+    List<SpuAttrValueEntity> querySpuAttrValueBySpuId(long spuId);}

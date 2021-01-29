@@ -1,11 +1,9 @@
 package com.cupdata.wms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.common.bean.PageParamVo;
+import com.cupdata.common.bean.PageResultVo;
 import com.cupdata.wms.entity.WareEntity;
-
-import java.util.Map;
 
 /**
  * 仓库信息
