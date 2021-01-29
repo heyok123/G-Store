@@ -6,7 +6,7 @@ import com.cupdata.pms.entity.*;
 import com.cupdata.search.feign.PmsInfoClient;
 import com.cupdata.search.feign.WmsInfoClient;
 import com.cupdata.search.pojo.Goods;
-import com.cupdata.search.pojo.SearchAttrValueVo;
+import com.cupdata.search.vo.SearchAttrValueVo;
 import com.cupdata.search.repository.GoodsRepository;
 import com.cupdata.wms.entity.WareSkuEntity;
 import org.junit.jupiter.api.Test;
@@ -119,7 +119,7 @@ class CupdataSearchApplicationTests {
 						goods.setSearchAttrs(attrValueVoList);
 						return goods;
 					}).collect(Collectors.toList());
-					//批量导入至es
+					//3.批量导入至es
 					goodsRepository.saveAll(goodsList);
 				}
 			});

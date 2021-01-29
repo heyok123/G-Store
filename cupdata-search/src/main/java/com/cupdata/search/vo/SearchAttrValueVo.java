@@ -1,4 +1,4 @@
-package com.cupdata.search.pojo;
+package com.cupdata.search.vo;
 
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Field;

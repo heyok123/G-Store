@@ -1,5 +1,6 @@
 package com.cupdata.search.pojo;
 
+import com.cupdata.search.vo.SearchAttrValueVo;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
