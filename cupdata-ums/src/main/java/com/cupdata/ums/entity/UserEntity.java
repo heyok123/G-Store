@@ -104,4 +104,7 @@ public class UserEntity implements Serializable {
 	 */
 	private List<Integer> roleIds;
 
+	private String verCode;
+	private String token;
+
 }
