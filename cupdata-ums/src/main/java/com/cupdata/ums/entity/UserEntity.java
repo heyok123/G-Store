@@ -2,10 +2,11 @@ package com.cupdata.ums.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
+import java.util.List;
 
 /**
  * 用户表
@@ -96,5 +97,11 @@ public class UserEntity implements Serializable {
 	 * 注册时间
 	 */
 	private Date createTime;
+
+
+	/**
+	 * 角色id--演示批量上传--可编写VO存放
+	 */
+	private List<Integer> roleIds;
 
 }

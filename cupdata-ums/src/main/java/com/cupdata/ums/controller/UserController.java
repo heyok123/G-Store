@@ -9,8 +9,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户表
@@ -26,6 +28,20 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    /**
+     * @Description: 用户批量导入
+     * @Author: Wsork
+     * @Date: 2021/2/1 16:30
+     * @param: [file]
+     * @return: com.cupdata.common.bean.ResponseVo<java.util.Map<java.lang.String,java.lang.Object>>
+     */
+    @ApiOperation("用户批量导入")
+    @PostMapping("/batchImportUser")
+    public ResponseVo<Map<String,Object>> batchImportUser(MultipartFile file){
+        Map<String,Object> map = userService.batchImportUser(file,userService);
+        return ResponseVo.ok(map);
+    }
 
     /**
      * 列表
