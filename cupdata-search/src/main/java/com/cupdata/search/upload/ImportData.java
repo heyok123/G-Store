@@ -35,7 +35,7 @@ public class ImportData {
     private WmsInfoClient wmsInfoClient;
 
     /**
-     * @Description: 注: 在测试用例启动导入数据
+     * @Description: 注: 在测试用例启动导入数据 此处为demo
      * @Author: Wsork
      * @Date: 2021/1/29 17:01
      * @param: []

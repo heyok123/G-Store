@@ -1,10 +1,10 @@
 package com.cupdata.search.controller;
 
-import com.cupdata.common.bean.ResponseVo;
 import com.cupdata.search.service.SearchService;
 import com.cupdata.search.vo.SearchParamVo;
 import com.cupdata.search.vo.SearchResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,10 +27,17 @@ public class SearchController {
      * @param: [searchParamVo]
      * @return: com.cupdata.common.bean.ResponseVo
      */
+//    @GetMapping
+//    public ResponseVo<SearchResponseVo> search(SearchParamVo searchParamVo){
+//        SearchResponseVo searchResponseVo = this.searchService.search(searchParamVo);
+//        return ResponseVo.ok(searchResponseVo);
+//    }
     @GetMapping
-    public ResponseVo<SearchResponseVo> search(SearchParamVo searchParamVo){
+    public String search(SearchParamVo searchParamVo, Model model){
         SearchResponseVo searchResponseVo = this.searchService.search(searchParamVo);
-        return ResponseVo.ok(searchResponseVo);
+        model.addAttribute("response",searchResponseVo);
+        model.addAttribute("searchParam",searchParamVo);
+        return "search";
     }
 
 
