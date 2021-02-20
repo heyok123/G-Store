@@ -41,7 +41,7 @@ public class ShiroConfig {
      */
 
     /**
-     * @Description: 创建ShiroFilterFactoryBean  工厂bean
+     * @Description: 过滤规则 创建ShiroFilterFactoryBean
      * @Author: Wsork
      * @Date: 2021/1/22 16:09
      * @param: [securityManager]
@@ -102,7 +102,7 @@ public class ShiroConfig {
     }
 
     /**
-     * @Description: 开启shiro注解(@RequiresRoles @RequiresPermissions...)
+     * @Description: 开启aop注解支持(@RequiresRoles @RequiresPermissions...)
      *               配置两个bean(AuthorizationAttributeSourceAdvisor + DefaultAdvisorAutoProxyCreator)
      * @Author: Wsork
      * @Date: 2021/1/22 16:20
@@ -116,6 +116,10 @@ public class ShiroConfig {
         return advisor;
     }
 
+    /**
+     * @Description: 开启Shiro的注解支持
+     * Created by Wsork on 2021/2/4 11:11
+     */
     @Bean
     public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator(){
         DefaultAdvisorAutoProxyCreator creator = new DefaultAdvisorAutoProxyCreator();

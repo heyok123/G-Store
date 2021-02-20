@@ -37,10 +37,26 @@ public class CustomRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         LOGGER.info("执行授权操作！");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        // 获取权限
+//         获取权限
         UserEntity user = (UserEntity) SecurityUtils.getSubject().getPrincipal();
 //        authorizationInfo.addStringPermission(user.getPerm);
         return authorizationInfo;
+
+        //获取登录用户名
+//        String name = (String) principals.getPrimaryPrincipal();
+//        //查询用户名称
+//        UserEntity user = loginService.getUserByName(name);
+//        //添加角色和权限
+//        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+//        for (Role role : user.getRoles()) {
+//            //添加角色
+//            simpleAuthorizationInfo.addRole(role.getRoleName());
+//            //添加权限
+//            for (Permissions permissions : role.getPermissions()) {
+//                simpleAuthorizationInfo.addStringPermission(permissions.getPermissionsName());
+//            }
+//        }
+//        return simpleAuthorizationInfo;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.cupdata.search.service;
 
 import com.cupdata.search.vo.SearchParamVo;
+import com.cupdata.search.vo.SearchResponseVo;
 
 /**
  * @Description: TODO
@@ -15,5 +16,5 @@ public interface SearchService {
      * @param: [searchParamVo]
      * @return: void
      */
-    void search(SearchParamVo searchParamVo);
+    SearchResponseVo search(SearchParamVo searchParamVo);
 }
