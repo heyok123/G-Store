@@ -70,6 +70,7 @@ public class SearchServiceImpl implements SearchService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        AtomicInteger atomicInteger = new AtomicInteger();
         return null;
     }
 
